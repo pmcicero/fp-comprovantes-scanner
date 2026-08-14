@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import {readFileSync} from 'node:fs';
+import {backendUrl,validateQr} from './app.js';
+const key='12345678901234567890123456789012345678901234',valid=`https://sistemas.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp?p=${key}|2|1|1`;
+test('aceita NFC-e SEFAZ-AM HTTPS e preserva encoding',()=>{assert.equal(validateQr(valid),valid);const target=new URL(backendUrl(valid));assert.equal(target.searchParams.get('qr'),valid)});
+test('rejeita vazio, esquemas e hosts inesperados',()=>{for(const value of ['',`javascript:${valid}`,`data:text/plain,${valid}`,`file://${valid}`,'https://example.com/nfce'])assert.throws(()=>validateQr(value),/QR inválido/)});
+test('rejeita conteúdo excessivo',()=>assert.throws(()=>validateQr(`https://sistemas.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp?p=${'1'.repeat(2100)}`),/excessivo/));
+test('frontend não contém segredos, persistência ou backend público de escrita',()=>{const source=readFileSync(new URL('./app.js',import.meta.url),'utf8');assert.doesNotMatch(source,/password|client_secret|bearer|localStorage|sessionStorage|fetch\s*\(/i);assert.match(source,/facingMode:'environment'/);assert.match(source,/qr-scanner@1\.4\.2/)});
+test('manifest prepara instalação standalone',()=>{const manifest=JSON.parse(readFileSync(new URL('./manifest.webmanifest',import.meta.url),'utf8'));assert.equal(manifest.display,'standalone');assert.ok(manifest.icons.length)});

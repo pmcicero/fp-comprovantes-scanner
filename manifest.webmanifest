@@ -1,0 +1,10 @@
+{
+  "name": "FP — Scanner de comprovantes",
+  "short_name": "FP Scanner",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f2ed",
+  "theme_color": "#713f24",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
