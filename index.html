@@ -18,12 +18,12 @@
   <p class="muted">A câmera lê o QR e envia somente seu conteúdo à Web App FP. Este site não armazena nem interpreta dados fiscais.</p>
   <section class="card">
     <div class="actions"><button id="scan" class="primary">Escanear QR</button><button id="diagnose">Diagnosticar este QR</button><button id="paste">Colar link</button></div>
-    <div id="camera" hidden><div class="preview"><video id="video" playsinline muted></video><div class="guide"></div><p class="hint">Mantenha o QR inteiro dentro do quadro. Aproxime ou afaste até ficar nítido.</p></div><canvas id="frame" hidden></canvas><div class="actions"><button id="forceZxing" hidden>Forçar leitura ZXing</button><button id="capture" class="primary" hidden>Capturar imagem para tentar ler</button><button id="cancel">Cancelar</button></div><p id="manualStatus" hidden role="status" aria-live="assertive"></p><details><summary>Diagnóstico da câmera e decoders</summary><pre id="cameraDiag"></pre></details></div>
+    <div id="camera" hidden><div class="preview"><video id="video" playsinline muted></video><div class="guide"></div><p class="hint">Mantenha o QR inteiro dentro do quadro. Aproxime ou afaste até ficar nítido.</p></div><canvas id="frame" hidden></canvas><div class="actions"><button id="forceQrScanner" hidden>Forçar leitura qr-scanner</button><button id="capture" class="primary" hidden>Capturar imagem para tentar ler</button><button id="cancel">Cancelar</button></div><p id="manualStatus" hidden role="status" aria-live="assertive"></p><details id="diagnosticDetails" hidden><summary>Diagnóstico da câmera e decoders</summary><pre id="cameraDiag"></pre></details></div>
     <div id="manual" hidden><label for="content">Link completo do QR fiscal</label><textarea id="content" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea><button id="send" class="primary">Continuar na Web App</button></div>
   </section>
   <div id="message" class="card" hidden role="status" aria-live="polite"></div>
   <section id="study" class="card" hidden><h2>Comparação das leituras</h2><p id="studyCount"></p><pre id="studyText"></pre><button id="copyStudy">COPIAR DIAGNÓSTICO</button><p class="muted">As leituras permanecem somente na memória desta página.</p></section>
   <section id="qrDiag" class="card error" hidden><h2>QR decodificado — conteúdo não suportado</h2><pre id="qrDiagText"></pre><button id="copyQr">COPIAR CONTEÚDO DECODIFICADO</button><p class="muted">O conteúdo não é armazenado nem enviado a terceiros.</p></section>
-  <script type="module" src="app.js?v=24d-parser-painel"></script>
+  <script type="module" src="app.js?v=24d-zxing-operativo"></script>
 </body>
 </html>
