@@ -1,10 +1,13 @@
 {
-  "name": "FP — Scanner de comprovantes",
-  "short_name": "FP Scanner",
+  "name": "FP Comprovantes",
+  "short_name": "FP Comprovantes",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f6f2ed",
   "theme_color": "#713f24",
-  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+  "icons": [
+    {"src":"apple-touch-icon.png","sizes":"180x180","type":"image/png","purpose":"any"},
+    {"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
 }
